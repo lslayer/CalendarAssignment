@@ -1,35 +1,35 @@
 package tk.vgog;
 
-import java.time.Duration;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  Simple library to calculate the number of workdays between two given dates.
  */
 public class CalendarAssignment {
-    public static final Long ZERO_DAYS = 0L;
-    private final List<LocalDateTime> holidays = new ArrayList<>();
+    public static final List<DayOfWeek> OFF_DAYS = Arrays.asList(DayOfWeek.SUNDAY, DayOfWeek.SATURDAY);
+    private final List<LocalDate> holidays = new ArrayList<>();
 
-    //Iteration two - return number of days, minus holidays
+    //Iteration three - functional style
     public Long calculateWorkdays(LocalDate from, LocalDate to) {
-        if (from.isAfter(to)) {
-            return ZERO_DAYS;
-        }
-        long holidaysQuantity = holidays
+        return from.datesUntil(to, Period.ofDays(1)).toList()
                 .stream()
-                .filter(d -> d.isAfter(from.atStartOfDay()) && d.isBefore(to.atStartOfDay()))
+                .filter(Predicate.not(d -> OFF_DAYS.contains(d.getDayOfWeek())))
+                .filter(Predicate.not(holidays::contains))
                 .count();
-        Duration daysBetween = Duration.between(from.atStartOfDay(), to.atStartOfDay());
-        return daysBetween.minusDays(holidaysQuantity).toDays();
     }
 
+    //Thinking about outsourcing this
     public void addHoliday(LocalDate holiday) {
-        this.holidays.add(holiday.atStartOfDay());
+        this.holidays.add(holiday);
     }
 
+    //Package-private for tests
     void clearHolidays() {
         this.holidays.clear();
     }

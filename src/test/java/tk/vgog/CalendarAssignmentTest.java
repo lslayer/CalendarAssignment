@@ -30,13 +30,13 @@ class CalendarAssignmentTest {
     @Test
     @DisplayName("Days between two dates")
     void givenTwoDates_whenCalculatingDurationBetween_gotActualNumberOfDays() {
-        assertEquals(assignment.calculateWorkdays(from, to), 19L);
+        assertEquals(15L, assignment.calculateWorkdays(from, to));
     }
 
     @Test
     @DisplayName("Days between two dates respecting holidays")
     void givenTwoDatesAndHolidays_whenCalculatingDurationBetween_gotDaysRespectingHolidays() {
         assignment.addHoliday(LocalDate.of(2022, 8, 12));
-        assertEquals(assignment.calculateWorkdays(from, to), 18);
+        assertEquals(14L, assignment.calculateWorkdays(from, to));
     }
 }
