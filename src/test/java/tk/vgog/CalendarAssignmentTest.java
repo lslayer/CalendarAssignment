@@ -24,14 +24,19 @@ class CalendarAssignmentTest {
 
     @AfterEach
     void tearDown() {
-
-        //Nothing for now
-
+        assignment.clearHolidays();
     }
 
     @Test
     @DisplayName("Days between two dates")
-    void calculateWorkdays() {
+    void givenTwoDates_whenCalculatingDurationBetween_gotActualNumberOfDays() {
         assertEquals(assignment.calculateWorkdays(from, to), 19L);
+    }
+
+    @Test
+    @DisplayName("Days between two dates respecting holidays")
+    void givenTwoDatesAndHolidays_whenCalculatingDurationBetween_gotDaysRespectingHolidays() {
+        assignment.addHoliday(LocalDate.of(2022, 8, 12));
+        assertEquals(assignment.calculateWorkdays(from, to), 18);
     }
 }
