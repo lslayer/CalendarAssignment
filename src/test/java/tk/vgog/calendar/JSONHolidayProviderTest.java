@@ -1,4 +1,4 @@
-package tk.vgog;
+package tk.vgog.calendar;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,12 +19,12 @@ class JSONHolidayProviderTest {
             }
             """;
 
-    private HolidayProvider provider = new JSONHolidayProvider();
+    private final HolidayProvider provider = new JSONHolidayProvider();
     @Test
     @DisplayName("Correct json parsing")
     void givenJSONData_whenFillHolidays_gotHolidaysContainsAllData() {
         provider.fillHolidays(holidaysExternal);
-        assertTrue(provider.getHolidays().size() == 2);
+        assertEquals(2, provider.getHolidays().size());
         assertTrue(provider.getHolidays().contains(LocalDate.of(2022,7,1)));
         assertTrue(provider.getHolidays().contains(LocalDate.of(2022,7,5)));
         assertFalse(provider.getHolidays().contains(LocalDate.of(2022,7,3)));
@@ -43,9 +43,7 @@ class JSONHolidayProviderTest {
     @DisplayName("Incorrect argument passed")
     void givenIncorrectData_whenFillHolidays_gotException() {
         InvalidParameterException thrown = Assertions.assertThrows(InvalidParameterException.class,
-                () -> {
-                    provider.fillHolidays(123L);
-                });
+                () -> provider.fillHolidays(123L));
         assertEquals("Expected one String, containing JSON as parameter", thrown.getMessage());
     }
 

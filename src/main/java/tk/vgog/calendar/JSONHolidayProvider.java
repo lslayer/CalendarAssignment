@@ -1,4 +1,4 @@
-package tk.vgog;
+package tk.vgog.calendar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

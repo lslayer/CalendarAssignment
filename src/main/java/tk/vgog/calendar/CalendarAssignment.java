@@ -1,4 +1,4 @@
-package tk.vgog;
+package tk.vgog.calendar;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,9 +10,9 @@ import java.util.function.Predicate;
  */
 public class CalendarAssignment {
     /**
-     * There can be just offDays here in CalendarAssesment,
+     * There can be just offDays here in CalendarAssignment,
      * but sometimes weekend are not those days we used to have
-     * It can be easyly skipped, as we have several constructors
+     * It can be easily skipped, as we have several constructors
      */
     private final CalendarConfiguration configuration;
     private final HolidayProvider holidayProvider;

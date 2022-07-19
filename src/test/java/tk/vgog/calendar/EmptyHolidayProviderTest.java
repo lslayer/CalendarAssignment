@@ -1,4 +1,4 @@
-package tk.vgog;
+package tk.vgog.calendar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EmptyHolidayProviderTest {
 
-    HolidayProvider provider = new EmptyHolidayProvider();
+    final HolidayProvider provider = new EmptyHolidayProvider();
 
     @Test
     @DisplayName("Clear holidays works")

@@ -1,10 +1,10 @@
-package tk.vgog;
+package tk.vgog.calendar;
 
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * This clasee is for providing holidays, got from different sources, to CalendarAssignment
+ * This class is for providing holidays, got from different sources, to CalendarAssignment
  */
 public interface HolidayProvider {
     void clearHolidays();

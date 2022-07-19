@@ -13,8 +13,8 @@ The completed assignment should be sent back in a zip file (please include pom a
 
 Example
 Given
-a. July 1st, 2022 is a holiday
-b. July 2nd, 2022 is a weekend
-c. July 3rd, 2022 is a weekend
-The number of workdays between June 27, 2022 and July 4th, 2022 is 5.
+1. July 1st, 2022 is a holiday
+2. July 2nd, 2022 is a weekend
+3. July 3rd, 2022 is a weekend
+The number of workdays between _2022 June 27_ and _2022 July 4th_ is **5**.
 
